@@ -1,5 +1,6 @@
 package com.springboot.exam.web;
 
+import com.springboot.exam.config.auth.dto.SessionUser;
 import com.springboot.exam.domain.posts.PostsRepository;
 import com.springboot.exam.service.posts.PostsService;
 import com.springboot.exam.web.dto.PostsResponsedto;
@@ -10,15 +11,22 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import javax.servlet.http.HttpSession;
+
 @RequiredArgsConstructor
 @Controller
 public class IndexController {
 
     private final PostsService postsService;
-
+    private final HttpSession httpSession;
     @GetMapping("/")
-    public String index(Model M){
-        M.addAttribute("posts", postsService.findAllDesc());
+    public String index(Model model) {
+        model.addAttribute("posts", postsService.findAllDesc());
+
+        SessionUser user = (SessionUser) httpSession.getAttribute("user");
+        if (user != null) {
+            model.addAttribute("userName", user.getName());
+        }
         return "index";
     }
 
@@ -34,5 +42,7 @@ public class IndexController {
         model.addAttribute("post",dto);
         return "post-update";
     }
+
+
 
 }

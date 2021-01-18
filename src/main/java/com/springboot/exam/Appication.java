@@ -12,6 +12,5 @@ public class Appication {
 
         //SpringApplication 내장 WAS( 내장 톰캣, 내장서버) 를 실행시켜줌
         //@EnableJpaAuditing  JPA auditing 기능 활성화
-
     }
 }
