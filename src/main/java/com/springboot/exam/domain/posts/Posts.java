@@ -1,5 +1,6 @@
 package com.springboot.exam.domain.posts;
 
+import com.springboot.exam.domain.BaseTimeEntity;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,7 +10,7 @@ import javax.persistence.*;
 @Getter
 @NoArgsConstructor
 @Entity //Entity ( 테이블과 링크될 클래스 기본값으로 클래스의 카멜케이스 이름을 언더스코어 네이밍으로 테이블 이름을 매칭)
-public class Posts {
+public class Posts extends BaseTimeEntity {
 
     //JAP 사용하기
     //Entity Calss

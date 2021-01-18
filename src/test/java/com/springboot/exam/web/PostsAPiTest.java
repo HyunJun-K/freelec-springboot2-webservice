@@ -2,13 +2,11 @@ package com.springboot.exam.web;
 
 
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.springboot.exam.domain.posts.Posts;
 import com.springboot.exam.domain.posts.PostsRepository;
 import com.springboot.exam.web.dto.PostsSaveRequestDTO;
 import com.springboot.exam.web.dto.PostsUpdateRequestDto;
 import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +22,6 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 
 @RunWith(SpringRunner.class)

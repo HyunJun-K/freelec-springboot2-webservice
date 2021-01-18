@@ -1,9 +1,11 @@
 package com.springboot.exam.web;
 
 import com.springboot.exam.service.posts.PostsService;
+import com.springboot.exam.web.dto.PostsResponsedto;
 import com.springboot.exam.web.dto.PostsSaveRequestDTO;
 import com.springboot.exam.web.dto.PostsUpdateRequestDto;
 import lombok.RequiredArgsConstructor;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
@@ -11,6 +13,9 @@ import org.springframework.web.bind.annotation.*;
 public class PostsAPiController {
 
     private final PostsService postsService;
+
+
+
 
     @PostMapping("/api/v1/posts")
     public Long save(@RequestBody PostsSaveRequestDTO requestDTO){
@@ -22,12 +27,16 @@ public class PostsAPiController {
         return postsService.update(id, requestDto);
     }
 
-    @DeleteMapping("/api/v1/posts/{id}")
-    public Long delete(@PathVariable Long id) {
-        postsService.delete(id);
-        return id;
+    @GetMapping("/api/v1/posts/{id}")
+    public PostsResponsedto findById(@PathVariable Long id) {
+       return postsService.findById(id);
     }
 
 
+    @DeleteMapping("/api/v1/posts/{id}")
+    public Long delete(@PathVariable Long id){
+        postsService.delete(id);
+        return id;
+    }
 
 }
